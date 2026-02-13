@@ -8,7 +8,7 @@
 <style>
 body {
     margin: 0;
-    font-family: "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","NotoColorEmoji","Arial",sans-serif;
+    font-family: Arial, sans-serif;
     background: #ffc0cb;
     text-align: center;
     overflow-x: hidden;
@@ -18,14 +18,6 @@ body {
 .active { display: block; }
 
 h1 { font-size: 2.8rem; margin-top: 35vh; }
-
-input {
-    padding: 10px 15px;
-    font-size: 1.1rem;
-    border-radius: 15px;
-    border: none;
-    margin-top: 20px;
-}
 
 button {
     padding: 15px 35px;
@@ -176,15 +168,8 @@ button {
 
 <body>
 
-<!-- Screen 0: Password -->
-<div class="screen active" id="s0">
-    <h1>qual è la cosa che preferisco al mondo? </h1>
-    <input type="text" id="pwdInput" placeholder="Rispondi qui" autofocus>
-    <button onclick="checkPwd()">Enter</button>
-</div>
-
 <!-- Screen 1 -->
-<div class="screen" id="s1">
+<div class="screen active" id="s1">
     <h1>Buon San Valentino, baby </h1>
     <button onclick="start()">Continue </button>
     <div class="cupid"></div>
@@ -230,7 +215,7 @@ button {
             <div class="caption">Happy hug day </div>
         </div>
         <div>
-            <img src="photo7.jpg" onclick="note('And last youll always have a kiss from me, not just on your lips. On your hands for you are my lady, on your cheeks for you are my mother and on your forehead, for you are my baby ')">
+            <img src="photo7.jpg" onclick="note('And last youll always have a kiss from me, not just on your lips. On your hands for you sre my lady, on your cheeks for you are my mother and on your forehead, for you are my baby ')">
             <div class="caption">Happy kiss day </div>
         </div>
     </div>
@@ -239,7 +224,7 @@ button {
 
 <!-- Screen 4 -->
 <div class="screen" id="s4">
-    <h1>Will you be my Valentine always? </h1>
+    <h1>Will you be my Valentine? </h1>
     <button onclick="yes()">YES </button>
     <button id="noBtn">NO </button>
 </div>
@@ -277,22 +262,8 @@ setInterval(()=>{
     setTimeout(()=>h.remove(),6000);
 },500);
 
-// Password check
-function checkPwd(){
-    const input = document.getElementById("pwdInput").value.trim();
-    if(input.toLowerCase() === "azhagi"){
-        // Remove the password screen
-        document.getElementById('s0').classList.remove('active');
-        // Directly activate screen 1
-        document.getElementById('s1').classList.add('active');
-        // Start music
-        music.play().catch(()=>{});
-    } else {
-        alert("Incorrect! Try again ");
-    }
-}
-
 function start(){
+    music.play().catch(()=>{});
     next(2);
 }
 
@@ -351,9 +322,6 @@ document.getElementById("noBtn").addEventListener("touchstart",()=>{
 });
 
 function yes(){
-    // Show photo8.jpg popup first
-    note("<img src='photo8.jpg' style='width:100%;border-radius:15px;'>");
-
     // Super magical grand explosion
     const symbols=["","","","",""];
     for(let i=0;i<60;i++){
@@ -371,6 +339,8 @@ function yes(){
     // Big heart fade in
     const bh = document.getElementById("bigHeart");
     bh.style.opacity = 1;
+    // Show popup with photo8.jpg
+    note("<img src='photo8.jpg' style='width:90%; border-radius:15px;'>");
     setTimeout(()=>next(5),2500);
 }
 </script>
